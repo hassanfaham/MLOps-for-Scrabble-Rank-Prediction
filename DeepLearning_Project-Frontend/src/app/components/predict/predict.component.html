@@ -1,0 +1,59 @@
+<img
+width=510px
+height=230px
+alt="Scrabble Game Image"
+src="../assets/Scrabble_Game_Image1.jpg"
+/>
+<h4 style="text-align: center;  ">Enter Scrabble Game Player Data and check his rating.</h4><br>
+
+<div class="form-group">
+    <form #ratingForm="ngForm">
+  
+      <div class="form-group">
+        <label for="N_games_played">Number of Games Played: </label>
+        <input type="number" class="form-control" id="N_games_played" min=0
+                [(ngModel)]="rating.N_games_played" name="N_games_played">
+        
+      </div>
+  
+      <div class="form-group">
+        <label for="mean_points_per_round">Average Points Per Round:</label>
+        <input type="number" class="form-control" id="mean_points_per_round" min=0
+                [(ngModel)]="rating.mean_points_per_round" name="mean_points_per_round">
+      </div>
+  
+      <div class="form-group">
+        <label for="mean_move_length">Average Move Length:</label>
+        <input type="number" class="form-control" id="mean_move_length" min=0
+                [(ngModel)]="rating.mean_move_length" name="mean_move_length">
+      </div>
+      
+      <label for="first_to_play">First To Play ?</label>
+      <div class="form-check" style="margin-left: auto; margin-right: auto; width:20%">
+        <label for="first_to_play_t" class="form-check-label" style=" margin-right: 5px;" >Yes</label>
+        <input type="radio" class="form-check-input" id="first_to_play" name="first_to_play_t" value="true"  [(ngModel)]="rating.first_to_play">
+    
+        <label for="first_to_play_f" class="form-check-label " style="margin-left: 25px; margin-right: 5px;" >No</label>
+        <input type="radio" class="form-control-input" id="first_to_play" name="first_to_play_f" value="false"  [(ngModel)]="rating.first_to_play">
+    </div>
+  
+    <label for="winner">Winner ?</label>
+    <div class="form-check" style="margin-left: auto; margin-right: auto; width:20%">
+      <label for="winner_t" class="form-check-label" style=" margin-right: 5px;">Yes</label>
+      <input type="radio" class="form-check-input" id="winner" name="winner_t" value="true" [(ngModel)]="rating.winner">
+  
+      <label for="winner_f" class="form-check-label " style="margin-left: 25px;  margin-right: 5px;" >No</label>
+      <input type="radio" class="form-control-input" id="winner" name="winner_f" value="false" [(ngModel)]="rating.winner">
+  </div>
+  
+    </form>
+  </div>
+  
+  <div class="card-container">
+    <a class="card" target="_blank" rel="noopener" (click)="onPredict()">
+      <span style="color: aliceblue;">Predict</span>
+    </a>
+  </div>
+  
+  <h5>Predicted Rating : <span style="font-weight: bold; color :#E64C27">{{prediction}}</span></h5>
+  

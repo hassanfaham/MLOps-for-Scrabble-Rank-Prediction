@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ranking-prediction-service
+spec:
+  selector:
+    app: ranking-prediction-app
+  ports:
+    - protocol: "TCP"
+      port: 3000
+      targetPort: 8000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ranking-prediction-app
+spec:
+  selector:
+    matchLabels:
+      app: ranking-prediction-app
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: ranking-prediction-app
+    spec:
+      containers:
+        - name: ranking-prediction-app
+          image: ranking-prediction-app
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
